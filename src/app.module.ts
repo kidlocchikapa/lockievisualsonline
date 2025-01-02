@@ -6,13 +6,16 @@ import { AppController } from './app.controller';
 import { UserService } from './app.service';
 import { User } from './auth/entities/auth.entity';
 import { AuthModule } from './auth/auth.module';
+import { FeedbackModule } from './feedback/feedback.module';
 import configuration from '../config';
+import { Feedback } from './feedback/entities/feedback.entity';
+
 
 @Module({
-  imports: [
+  imports: [ FeedbackModule,
     ConfigModule.forRoot({
       load: [configuration],
-      isGlobal: true,
+      isGlobal: true, 
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -21,7 +24,7 @@ import configuration from '../config';
       username: 'root',
       password: '',
       database: 'lockievisuals',
-      entities: [User],
+      entities: [User, Feedback],
       synchronize: true,
       logging: true,
     }),
@@ -37,6 +40,7 @@ import configuration from '../config';
     }),
     TypeOrmModule.forFeature([User]),
     AuthModule,
+    FeedbackModule,
   ],
   controllers: [AppController],
   providers: [UserService],

@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, OneToMany, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Feedback } from '../../feedback/entities/feedback.entity';
 
 @Entity('users')
-export class User {
+export  class User {
   @PrimaryGeneratedColumn()
   id: string;
 
@@ -19,4 +20,7 @@ export class User {
 
   @Column()
   termsAccepted: boolean;
+
+  @OneToMany(() => Feedback, feedback => feedback.user)
+  feedback: Feedback[];
 }
