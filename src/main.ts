@@ -9,6 +9,7 @@ async function bootstrap() {
     origin: 'http://localhost:3001', // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
     credentials: true, // Allow cookies if needed
+    
   });
 
   await app.listen(process.env.PORT ?? 3000);
