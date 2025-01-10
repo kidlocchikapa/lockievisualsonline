@@ -19,11 +19,11 @@ import { Feedback } from './feedback/entities/feedback.entity';
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'sql107.infinityfree.com',
       port: 3306,
       username: 'root',
       password: '',
-      database: 'lockievisuals',
+      database: 'if0_38079668_lockievisuals',
       entities: [User, Feedback],
       synchronize: true,
       logging: true,
